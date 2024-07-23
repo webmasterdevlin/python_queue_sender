@@ -20,7 +20,7 @@ def send_json_message(msg_bus: MessageBus) -> None:
     # Convert the JSON object to a string
     message_body = json.dumps({"id": f"object {counter}"})
     # Send the message to the configured queue
-    msg_bus.send(AZURE_SERVICE_BUS["QueueName"], message_body)
+    msg_bus.send(queue=AZURE_SERVICE_BUS["QueueName"], msg=message_body)
     print(f"Send message({counter}) is done.")
 
 
