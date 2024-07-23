@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "python-queue-sender"
+version = "0.1.0"
+description = ""
+authors = ["Devlin Duldulao <webmasterdevlin@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+python-dotenv = "^1.0.1"
+starlette = "^0.38.0"
+uvicorn = "^0.30.3"
+asyncio = "^3.4.3"
+httpx = "^0.27.0"
+azure-servicebus = "^7.12.2"
+azure-identity = "^1.17.1"
+azure-keyvault-secrets = "^4.8.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
