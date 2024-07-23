@@ -69,18 +69,18 @@ class MessageBus:
         print(f"Ensuring queue {queue} is durable (this is handled via Azure configurations).")
 
     @_reconnect_if_required
-    def send(self, queue: str, message: str, correlation_id: Optional[str] = None) -> None:
+    def send(self, queue: str, msg: str, correlation_id: Optional[str] = None) -> None:
         """
         Sends a message to the specified queue.
 
         Args:
             queue (str): The name of the queue.
-            message (str): The message to send.
+            msg (str): The message to send.
             correlation_id (Optional[str]): The correlation ID for the message. Defaults to None.
         """
         self.make_queue_durable(queue)
         with self.servicebus_client.get_queue_sender(queue_name=queue) as sender:
-            service_bus_message = ServiceBusMessage(message, message_id=correlation_id)
+            service_bus_message = ServiceBusMessage(msg, message_id=correlation_id)
             sender.send_messages(service_bus_message)
             print(f"Message sent to queue {queue}")
 
