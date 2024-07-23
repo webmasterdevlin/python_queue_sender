@@ -140,7 +140,7 @@ class MessageBus:
         Args:
             receiver (ServiceBusReceiver): The receiver object.
             message (ServiceBusReceivedMessage): The message to reject.
-            requeue (bool, optional): Whether to requeue the message. Defaults to True.
+            requeue (bool): Whether to requeue the message. Defaults to True.
         """
         try:
             if requeue:
