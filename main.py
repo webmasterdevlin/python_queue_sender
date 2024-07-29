@@ -1,7 +1,14 @@
 import asyncio
 import json
-from common.config import AZURE_SERVICE_BUS
-from common.message_bus import MessageBus
+import os
+import sys
+
+# Add the path to the common directory
+sys.path.append(os.path.join(os.path.dirname(__file__), '../common'))
+
+from config.azure_service_bus import QUEUE_NAMES
+from utils.azure_service_bus import MessageBus
+
 
 # The interval in seconds between sending messages
 interval: int = 5
@@ -20,7 +27,7 @@ def send_json_message(msg_bus: MessageBus) -> None:
     # Convert the JSON object to a string
     message_body = json.dumps({"id": f"object {counter}"})
     # Send the message to the configured queue
-    msg_bus.send(queue=AZURE_SERVICE_BUS["QueueName"], msg=message_body)
+    msg_bus.send(queue=QUEUE_NAMES["mysbqueue"], msg=message_body)
     print(f"Send message({counter}) is done.")
 
 
